@@ -61,6 +61,7 @@ jobs:
           username: ${{secrets.SSH_USER}}
           password: ${{secrets.SSH_PASSWORD}}
           key: ${{secrets.SSH_KEY}}
+          passphrase: ${{secrets.SSH_PASSPHRASE}}
           script: |
             sshpass -p ${{secrets.SSH_PASSWORD}} rsync -r --exclude='.git' docker-compose.yml ${{secrets.SSH_USER}}@${{secrets.SERVER_HOST}}:/app
             sshpass -p ${{secrets.SSH_PASSWORD}} rsync -r --exclude='.git' nginx/nginx.conf ${{secrets.SSH_USER}}@${{secrets.SERVER_HOST}}:/app/nginx
