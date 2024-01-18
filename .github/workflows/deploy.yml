@@ -32,18 +32,19 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Modify Docker Compose
-        run: sed -i 's|image: ghcr.io/${{ github.actor }}/${{ github.repository }}/myapp:.*|image: ghcr.io/${{ github.actor }}/${{ github.repository }}/myapp:$APP_VERSION|' docker-compose.yml
-
-      - name: Commit and Push Changes
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add docker-compose.yml
-          git commit -m "Update docker-compose.yml with new image tag $APP_VERSION"
-          git push origin main
+          sed -i "s|image: ghcr.io/${{ github.actor }}/${{ github.repository }}/myapp:.*|image: ghcr.io/${{ github.actor }}/${{ github.repository }}/myapp:${APP_VERSION}|g" docker-compose.yml
+
+      # - name: Commit and Push Changes
+      #   run: |
+      #     git config --global user.email "actions@github.com"
+      #     git config --global user.name "GitHub Actions"
+      #     git add docker-compose.yml
+      #     git commit -m "Update docker-compose.yml with new image tag $APP_VERSION"
+      #     git push origin main
 
   deploy-vps:
     runs-on: ubuntu-latest
