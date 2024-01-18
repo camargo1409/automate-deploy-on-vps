@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  # Serviço para a aplicação web
+  web-app:
+    build: .
+    ports:
+      - "3000:3000"  # Mapeia a porta 80 do contêiner para a porta 8080 do host
+
+  # Serviço para o Nginx
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"  # Mapeia a porta 80 do contêiner para a porta 80 do host
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro  # Mapeia o arquivo de configuração do Nginx
+    depends_on:
+      - web-app  # Garante que o serviço web-app está pronto antes do Nginx iniciar
