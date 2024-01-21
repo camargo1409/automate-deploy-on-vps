@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # Serviço para a aplicação web
   web-app:
-    image: ghcr.io/camargo1409/automate-deploy-on-vps/myapp:latest
+    image: ghcr.io/camargo1409/camargo1409/automate-deploy-on-vps/myapp:latest
     ports: 
       - "3000:3000"  # Mapeia a porta 80 do contêiner para a porta 8080 do host
 

@@ -27,6 +27,7 @@ jobs:
           docker push ghcr.io/${{ github.actor }}/${{ github.repository }}/myapp:latest
 
   deploy-vps:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
