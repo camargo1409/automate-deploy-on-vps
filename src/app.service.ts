@@ -30,6 +30,14 @@ export class AppService {
         company: 'Facebook',
         email: '',
       },
+      {
+        id: 4,
+        title: 'Desenvolvedor Fullstack',
+        description: 'Desenvolvedor Fullstack com experiência em React e Node',
+        salary: 5000,
+        company: 'Google',
+        email: '',
+      },
     ];
   }
 }
